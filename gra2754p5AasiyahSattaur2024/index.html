@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&family=Luckiest+Guy&display=swap" rel="stylesheet">
+<title>Drag and Drop Game | Aasiyah Sattaur, 2024</title>
+<style>
+	
+	
+#div1 {
+    width: 350px;
+    height: 170px;
+    padding: 10px;
+    background-image: url("trashCan.svg");
+    background-repeat: no-repeat;
+	margin-top: 600px;
+ 	overflow: hidden;
+    position: relative;
+}
+	
+   	#div1 .trash-contents {
+	    display: none;
+	    position: relative;
+	    width: 100%;
+	    height: 100%;
+	    padding: 5px;
+	}
+
+   #div1:hover .trash-contents {
+	    display: block;
+	}
+
+	
+  .draggable {
+      position: absolute;
+      cursor: move;
+	  width: 50px;
+  }
+	#drag1, #drag2, #drag3, #drag4, #drag5, #drag6{
+		position: absolute;
+	}
+	
+	#drag1 { top: 900px; left: 160px; }
+	#drag2 { top: 680px; left: 1100px; }
+	#drag3 { top: 500px; left: 470px; }
+	#drag5 { top: 550px; left: 790px; }
+	#drag6 { top: 800px; left: 700px; }
+	
+    body {
+    background-color: #B2DBED;
+	height: 1024px;
+	margin: 0;
+}
+	h1{
+       font-family: "Luckiest Guy", cursive;
+       font-weight: 400;
+       font-style: normal;
+	   font-size: 90px;
+	   color: white;
+	   text-align: center;
+	}
+	.instruct {
+	   text-align: center;
+	   margin-top: -50px;
+	   
+	   
+	}
+	
+	wrapper{
+		background-image: url(park.svg);
+        background-repeat: no-repeat;
+		margin: auto;
+		height: 1024px;
+		width: 1280px;
+		display: block;
+		position: relative;
+	}
+	
+	footer{
+		display: block;
+		text-align: left;
+		padding: 1em;
+		position: fixed;
+		bottom: 0;
+		
+	}
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+  droppedItem.style.display = "none";
+}
+</script>
+</head>
+	
+<body>
+<wrapper>
+<h1>Clean the Earth</h1>
+<p class="instruct">Click and drag the garbage to the trash can.</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div class="trash-contents"></div>
+
+<br>
+<img id="drag1" src="pb1.svg" draggable="true" ondragstart="drag(event)" width="50" class="draggable">
+<img id="drag2" src="b2.svg" draggable="true" ondragstart="drag(event)" width="50" class="draggable">
+<img id="drag3" src="banana.svg" draggable="true" ondragstart="drag(event)" width="50" class="draggable">
+<img id="drag5" src="pb2.svg" draggable="true" ondragstart="drag(event)" width="50" class="draggable">
+<img id="drag6" src="b1.svg" draggable="true" ondragstart="drag(event)" width="50" class="draggable">
+
+<footer>
+&copy; 2024, Aasiyah Sattaur 
+This is a fictitious web page created solely for the purpose of education and training. All products and people associated with this web page are also fictitious. Any resemblance to real brands, products, or people is purely coincidental. Information provided about the product is also fictitious and should not be construed to be representative of actual products on the market in a similar product category.
+</footer>
+	
+</wrapper>
+</body>
+</html>
